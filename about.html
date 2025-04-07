@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Your Chess Coach - Professional Chess Instruction</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Learn about your chess coach's background, qualifications, and teaching philosophy. Discover the expertise behind our professional chess instruction.">
+    <style>
+        /* Additional styles specific to About page */
+        .about-section {
+            padding: 5rem 0;
+        }
+        
+        .about-intro {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .about-image img {
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 4rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background-color: white;
+            border: 4px solid var(--secondary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-left {
+            left: 0;
+        }
+        
+        .timeline-right {
+            left: 50%;
+        }
+        
+        .timeline-right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-content h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
+        
+        .timeline-content .date {
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .philosophy-section {
+            background-color: var(--light-color);
+            padding: 5rem 0;
+        }
+        
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .philosophy-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .philosophy-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .credentials-section {
+            padding: 5rem 0;
+        }
+        
+        .credentials-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .credential-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .credential-icon {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-right: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .about-intro {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 18px;
+            }
+            
+            .timeline-right {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Chess Coach Logo">
+                <h1>Chess<span>Coach</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="success.html">Success Stories</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>About Your Coach</h1>
+            <p>Learn about my chess journey, qualifications, and teaching philosophy</p>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-intro">
+                <div class="about-image">
+                    <img src="images/coach.jpg" alt="Chess Coach Portrait">
+                </div>
+                <div class="about-text">
+                    <h2>My Chess Journey</h2>
+                    <p>Welcome! I'm [Your Name], a passionate chess coach with [X] years of experience in both playing and teaching the royal game. My chess journey began at the age of [age], when my [family member/friend] taught me how to move the pieces.</p>
+                    <p>What started as a casual hobby quickly developed into a passion as I began competing in local tournaments and studying the game more seriously. Over the years, I've had the privilege of learning from several master-level coaches, competing in national tournaments, and developing my own teaching methodology.</p>
+                    <p>Today, I dedicate myself to sharing my knowledge and love for chess with students of all ages and skill levels. I believe chess is not just a game but a powerful tool for developing critical thinking, patience, planning, and resilience.</p>
+                    <p>My teaching approach combines fundamental chess principles with personalized guidance tailored to each student's learning style and goals. Whether you're a complete beginner or an experienced tournament player looking to reach the next level, I'm committed to helping you achieve your chess ambitions.</p>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <h2 class="section-title">My Chess Timeline</h2>
+                
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <div class="date">2010</div>
+                        <h3>Chess Journey Begins</h3>
+                        <p>Started playing chess and joined the local chess club. Participated in my first school tournament.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <div class="date">2013</div>
+                        <h3>First Major Tournament</h3>
+                        <p>Competed in the regional championships and achieved a rating of [rating]. Began studying under Coach [Name].</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <div class="date">2015</div>
+                        <h3>National Competition</h3>
+                        <p>Qualified for the national championship. Reached a rating of [rating] and earned the title of [title if applicable].</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <div class="date">2017</div>
+                        <h3>Coaching Begins</h3>
+                        <p>Started teaching chess at [school/club name]. Developed my initial curriculum for beginners and intermediate players.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <div class="date">2019</div>
+                        <h3>Advanced Certification</h3>
+                        <p>Earned [certification name] and expanded coaching to include advanced students and tournament preparation.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-right">
+                    <div class="timeline-content">
+                        <div class="date">2022</div>
+                        <h3>Chess for Kids Program</h3>
+                        <p>Founded the Chess for Kids program at CFK Tambun, focusing on making chess accessible and enjoyable for young learners.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-left">
+                    <div class="timeline-content">
+                        <div class="date">Present</div>
+                        <h3>Continued Growth</h3>
+                        <p>Currently coaching students of all ages, organizing tournaments, and continuing my own chess development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="philosophy-section">
+        <div class="container">
+            <h2 class="section-title">My Teaching Philosophy</h2>
+            
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Critical Thinking</h3>
+                    <p>I believe chess is one of the best tools for developing critical thinking skills. My lessons emphasize the thought process behind moves rather than just memorization.</p>
+                </div>
+                
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Individual Approach</h3>
+                    <p>Every student is unique. I tailor my teaching methods to match each student's learning style, interests, and goals to ensure maximum engagement and progress.</p>
+                </div>
+                
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Measurable Progress</h3>
+                    <p>I believe in setting clear goals and tracking progress. My structured curriculum ensures students can see their improvement over time.</p>
+                </div>
+                
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <h3>Enjoyment First</h3>
+                    <p>Chess should be fun! I create a positive, encouraging environment where students develop a genuine love for the game that motivates continued learning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="credentials-section">
+        <div class="container">
+            <h2 class="section-title">Qualifications & Credentials</h2>
+            
+            <div class="credentials-list">
+                <div>
+                    <div class="credential-item">
+                        <div class="credential-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div>
+                            <h3>Chess Achievements</h3>
+                            <ul>
+                                <li>Current rating: [Your rating]</li>
+                                <li>[Tournament achievement]</li>
+                                <li>[Tournament achievement]</li>
+                                <li>[Any titles or significant achievements]</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="credential-item">
+                        <div class="credential-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div>
+                            <h3>Certifications</h3>
+                            <ul>
+                                <li>[Certification name] - [Issuing organization]</li>
+                                <li>[Certification name] - [Issuing organization]</li>
+                                <li>[Any coaching licenses or certifications]</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="credential-item">
+                        <div class="credential-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h3>Education</h3>
+                            <ul>
+                                <li>[Degree] in [Field] - [Institution]</li>
+                                <li>[Any chess-specific education or training]</li>
+                                <li>[Workshops or specialized training]</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="credential-item">
+                        <div class="credential-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div>
+                            <h3>Affiliations</h3>
+                            <ul>
+                                <li>[Chess federation membership]</li>
+                                <li>[Chess club affiliations]</li>
+                                <li>[Professional organizations]</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Start Your Chess Journey?</h2>
+            <p>Contact me today to schedule your first lesson or learn more about my chess coaching services.</p>
+            <a href="contact.html" class="btn btn-primary">Get Started</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Chess Coach Logo">
+                    <h3>Chess<span>Coach</span></h3>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Information</h4>
+                    <p><i class="fas fa-envelope"></i> email@example.com</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-map-marker-alt"></i> CFK Tambun</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="schedule.html">Schedule</a></li>
+                        <li><a href="success.html">Success Stories</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Me</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ChessCoach. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

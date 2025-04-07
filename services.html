@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Coaching Services - Professional Chess Instruction</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Explore our chess coaching services including individual lessons, group classes, and online coaching for all skill levels from beginner to advanced.">
+    <style>
+        /* Additional styles specific to Services page */
+        .services-section {
+            padding: 5rem 0;
+        }
+        
+        .service-block {
+            margin-bottom: 5rem;
+        }
+        
+        .service-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-right: 1.5rem;
+        }
+        
+        .service-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+        
+        .service-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-details {
+            background-color: var(--light-color);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        
+        .service-details h4 {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .service-details ul {
+            list-style-type: none;
+        }
+        
+        .service-details ul li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .service-details ul li:before {
+            content: "✓";
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+        }
+        
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+        
+        .pricing-table th, .pricing-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .pricing-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .pricing-table tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-section {
+            background-color: var(--light-color);
+            padding: 5rem 0;
+        }
+        
+        .faq-item {
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .faq-question:after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question.active:after {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-answer.show {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+        
+        @media (max-width: 992px) {
+            .service-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-image {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Chess Coach Logo">
+                <h1>Chess<span>Coach</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="success.html">Success Stories</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Chess Coaching Services</h1>
+            <p>Tailored instruction to help you reach your chess goals</p>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="container">
+            <div class="services-intro">
+                <h2 class="section-title">My Coaching Approach</h2>
+                <p>I offer a range of chess coaching services designed to meet the needs of players at all levels. My teaching methodology combines fundamental chess principles with personalized guidance, focusing on both tactical and strategic elements of the game. Whether you're just starting out or looking to take your game to the next level, I have a program that's right for you.</p>
+            </div>
+            
+            <div class="service-block" id="individual">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h2>Individual Lessons</h2>
+                </div>
+                
+                <div class="service-content">
+                    <div>
+                        <p>One-on-one instruction is the most effective way to improve your chess skills rapidly. These personalized sessions are tailored specifically to your strengths, weaknesses, and goals.</p>
+                        
+                        <h3>What to Expect</h3>
+                        <p>Each individual lesson begins with a brief review of previous material and homework, followed by focused instruction on specific aspects of your game that need improvement. We'll analyze your games, work through instructive positions, and develop a personalized study plan.</p>
+                        
+                        <h3>Benefits of Individual Coaching</h3>
+                        <ul>
+                            <li>Personalized attention and feedback</li>
+                            <li>Customized curriculum based on your specific needs</li>
+                            <li>Flexible scheduling to fit your availability</li>
+                            <li>Faster progress through targeted instruction</li>
+                            <li>Immediate answers to your questions</li>
+                        </ul>
+                        
+                        <h3>Pricing</h3>
+                        <table class="pricing-table">
+                            <thead>
+                                <tr>
+                                    <th>Package</th>
+                                    <th>Duration</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Single Session</td>
+                                    <td>1 hour</td>
+                                    <td>$XX</td>
+                                </tr>
+                                <tr>
+                                    <td>5-Session Package</td>
+                                    <td>5 hours</td>
+                                    <td>$XX (Save X%)</td>
+                                </tr>
+                                <tr>
+                                    <td>10-Session Package</td>
+                                    <td>10 hours</td>
+                                    <td>$XX (Save X%)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="service-details">
+                        <h4>Who Is This For?</h4>
+                        <ul>
+                            <li>Players of all ages and skill levels</li>
+                            <li>Tournament players looking to improve their results</li>
+                            <li>Students preparing for specific competitions</li>
+                            <li>Players with limited availability for group classes</li>
+                            <li>Anyone seeking rapid improvement</li>
+                        </ul>
+                        
+                        <h4>Location Options</h4>
+                        <ul>
+                            <li>In-person at CFK Tambun</li>
+                            <li>Online via Zoom or similar platform</li>
+                            <li>At your location (additional travel fee may apply)</li>
+                        </ul>
+                        
+                        <div class="service-cta">
+                            <a href="contact.html" class="btn btn-primary">Book a Lesson</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-block" id="group">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h2>Group Classes</h2>
+                </div>
+                
+                <div class="service-content">
+                    <div>
+                        <p>Group classes offer a collaborative learning environment where students can learn from both the instructor and their peers. These structured sessions follow a curriculum designed for specific skill levels.</p>
+                        
+                        <h3>Class Structure</h3>
+                        <p>Each group class includes a lesson on a specific chess topic, interactive exercises, guided practice, and homework assignments. Classes are kept small (maximum 8 students) to ensure everyone receives adequate attention.</p>
+                        
+                        <h3>Available Group Classes</h3>
+                        <ul>
+                            <li><strong>Beginner Class:</strong> For those new to chess or with limited experience. Covers basic rules, piece movement, simple tactics, and fundamental principles.</li>
+                            <li><strong>Intermediate Class:</strong> For players familiar with the basics who want to improve. Covers tactical patterns, basic endgames, opening principles, and strategic concepts.</li>
+                            <li><strong>Advanced Class:</strong> For experienced players looking to refine their skills. Covers complex tactics, advanced endgame theory, opening repertoire development, and positional play.</li>
+                        </ul>
+                        
+                        <h3>Pricing</h3>
+                        <table class="pricing-table">
+                            <thead>
+                                <tr>
+                                    <th>Package</th>
+                                    <th>Duration</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Monthly Membership (4 classes)</td>
+                                    <td>1.5 hours per class</td>
+                                    <td>$XX per month</td>
+                                </tr>
+                                <tr>
+                                    <td>Quarterly Membership (12 classes)</td>
+                                    <td>1.5 hours per class</td>
+                                    <td>$XX (Save X%)</td>
+                                </tr>
+                                <tr>
+                                    <td>Trial Class</td>
+                                    <td>1.5 hours</td>
+                                    <td>$XX</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="service-details">
+                        <h4>Who Is This For?</h4>
+                        <ul>
+                            <li>Players who enjoy learning in a social environment</li>
+                            <li>Students looking for regular, structured instruction</li>
+                            <li>Those who benefit from peer interaction and friendly competition</li>
+                            <li>Players seeking a more affordable coaching option</li>
+                        </ul>
+                        
+                        <h4>Schedule</h4>
+                        <ul>
+                            <li>Beginner: Mondays, 4:00-5:30 PM</li>
+                            <li>Intermediate: Wednesdays, 4:00-5:30 PM</li>
+                            <li>Advanced: Fridays, 4:00-5:30 PM</li>
+                        </ul>
+                        
+                        <div class="service-cta">
+                            <a href="schedule.html" class="btn btn-primary">View Schedule</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="service-block" id="online">
+                <div class="service-header">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h2>Online Coaching</h2>
+                </div>
+                
+                <div class="service-content">
+                    <div>
+                        <p>Online coaching offers the flexibility to learn from anywhere with an internet connection. These sessions use specialized chess platforms and video conferencing to provide an interactive learning experience.</p>
+                        
+                        <h3>Online Session Format</h3>
+                        <p>Online coaching sessions utilize screen sharing, interactive chess boards, and video conferencing to create an engaging learning environment. We'll use platforms like chess.com, lichess.org, or ChessBase to analyze positions, play training games, and work through exercises together.</p>
+                        
+                        <h3>Technical Requirements</h3>
+                        <ul>
+                            <li>Stable internet connection</li>
+                            <li>Computer, tablet, or smartphone</li>
+                            <li>Webcam and microphone (recommended but not required)</li>
+                            <li>Free account on chess.com or lichess.org</li>
+                        </ul>
+                        
+                        <h3>Pricing</h3>
+                        <table class="pricing-table">
+                            <thead>
+                                <tr>
+                                    <th>Package</th>
+                                    <th>Duration</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Single Session</td>
+                                    <td>1 hour</td>
+                                    <td>$XX</td>
+                                </tr>
+                                <tr>
+                                    <td>5-Session Package</td>
+                                    <td>5 hours</td>
+                                    <td>$XX (Save X%)</td>
+                                </tr>
+                                <tr>
+                                    <td>Monthly Subscription</td>
+                                    <td>4 sessions per month</td>
+                                    <td>$XX (Save X%)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="service-details">
+                        <h4>Who Is This For?</h4>
+                        <ul>
+                            <li>Players who prefer learning from home</li>
+                            <li>Students with busy schedules</li>
+                            <li>Those who live far from physical coaching locations</li>
+                            <li>Players who want to record sessions for later review</li>
+                        </ul>
+                        
+                        <h4>Additional Benefits</h4>
+                        <ul>
+                            <li>Session recordings available upon request</li>
+                            <li>Digital materials provided after each lesson</li>
+                            <li>Flexible scheduling including evenings and weekends</li>
+                            <li>Email support between sessions</li>
+                        </ul>
+                        
+                        <div class="service-cta">
+                            <a href="contact.html" class="btn btn-primary">Schedule Online Session</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">What age groups do you teach?</div>
+                    <div class="faq-answer">
+                        <p>I work with students of all ages, from young children (as young as 5 years old) to seniors. My teaching approach is adapted to suit the learning style and needs of each age group.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Do I need any prior chess knowledge to start lessons?</div>
+                    <div class="faq-answer">
+                        <p>Not at all! I welcome complete beginners and will teach you everything from the basic rules to advanced concepts at a pace that works for you. For those with some experience, we'll assess your current level and build from there.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">What materials do I need for lessons?</div>
+                    <div class="faq-answer">
+                        <p>For in-person lessons, a chess set is provided, but having your own for practice at home is recommended. A notebook for taking notes is also helpful. For online lessons, you'll need a device with internet access and possibly a free account on chess.com or lichess.org.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How often should I take lessons?</div>
+                    <div class="faq-answer">
+                        <p>For optimal progress, I recommend weekly lessons, which provides enough time to practice between sessions without losing momentum. However, I offer flexible scheduling options to accommodate different needs and availability.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Do you offer trial lessons?</div>
+                    <div class="faq-answer">
+                        <p>Yes! I offer a discounted trial lesson for new students to ensure we're a good fit before committing to a package. This gives you a chance to experience my teaching style and ask any questions you might have.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">How do I track my progress?</div>
+                    <div class="faq-answer">
+                        <p>I provide regular progress assessments for all students. For online players, we can track rating progress on chess platforms. For all students, I maintain notes on strengths, weaknesses, and areas of improvement that we review periodically.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Improve Your Chess Game?</h2>
+            <p>Contact me today to discuss which coaching option is best for your needs and schedule your first session.</p>
+            <a href="contact.html" class="btn btn-primary">Get Started</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Chess Coach Logo">
+                    <h3>Chess<span>Coach</span></h3>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Information</h4>
+                    <p><i class="fas fa-envelope"></i> email@example.com</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-map-marker-alt"></i> CFK Tambun</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="schedule.html">Schedule</a></li>
+                        <li><a href="success.html">Success Stories</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Me</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ChessCoach. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // FAQ Accordion
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    const isActive = question.classList.contains('active');
+                    
+                    // Close all other FAQs
+                    faqQuestions.forEach(q => {
+                        q.classList.remove('active');
+                        q.nextElementSibling.classList.remove('show');
+                    });
+                    
+                    // Toggle current FAQ
+                    if (!isActive) {
+                        question.classList.add('active');
+                        answer.classList.add('show');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

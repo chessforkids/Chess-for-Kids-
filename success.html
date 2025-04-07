@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Stories - Professional Chess Instruction</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Read about the achievements and progress of chess students who have benefited from our professional chess coaching.">
+    <style>
+        /* Additional styles specific to Success Stories page */
+        .success-section {
+            padding: 5rem 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '\201C';
+            font-family: Georgia, serif;
+            font-size: 5rem;
+            position: absolute;
+            top: -1rem;
+            left: 1rem;
+            color: rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-content {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-info h4 {
+            margin: 0;
+            color: var(--primary-color);
+        }
+        
+        .testimonial-info p {
+            margin: 0;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .stars {
+            color: #f1c40f;
+            margin-top: 0.5rem;
+        }
+        
+        .case-study {
+            background-color: var(--light-color);
+            padding: 3rem 0;
+            margin-bottom: 4rem;
+        }
+        
+        .case-study-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .case-study-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .case-study-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .case-study-content h2 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .case-study-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .tournament-results {
+            margin-bottom: 4rem;
+        }
+        
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .results-table th, .results-table td {
+            padding: 1rem;
+            text-align: left;
+        }
+        
+        .results-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .results-table tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .results-table tr:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        .medal {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+        
+        .gold {
+            color: #f1c40f;
+        }
+        
+        .silver {
+            color: #bdc3c7;
+        }
+        
+        .bronze {
+            color: #cd7f32;
+        }
+        
+        .gallery-section {
+            margin-bottom: 4rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 992px) {
+            .case-study-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .case-study-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Chess Coach Logo">
+                <h1>Chess<span>Coach</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="success.html" class="active">Success Stories</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Success Stories</h1>
+            <p>Celebrating the achievements of my chess students</p>
+        </div>
+    </section>
+
+    <section class="success-section">
+        <div class="container">
+            <h2 class="section-title">What My Students Say</h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>My son has been taking chess lessons for six months, and the improvement is remarkable. Not only has his chess rating increased by over 200 points, but his concentration and critical thinking skills have improved in school as well.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="images/parent1.jpg" alt="Parent Testimonial">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Parent of 9-year-old student</h4>
+                            <p>6 months of lessons</p>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>I've tried several chess instructors before, but none have been as effective. The personalized approach and clear explanations have helped me understand positional concepts that I struggled with for years. My tournament results speak for themselves!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="images/adult-student.jpg" alt="Adult Student Testimonial">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Adult tournament player</h4>
+                            <p>1 year of coaching</p>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>The group classes are fantastic! My daughter loves the friendly competition and has made great friends. The coach makes complex concepts accessible to children and keeps them engaged throughout the lessons.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="images/parent2.jpg" alt="Parent Testimonial">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Parent of 11-year-old student</h4>
+                            <p>8 months of group classes</p>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="case-study">
+        <div class="container">
+            <div class="case-study-container">
+                <div class="case-study-content">
+                    <h2>Student Spotlight: Ahmad's Chess Journey</h2>
+                    <p>Ahmad started chess lessons as a complete beginner at age 8. With consistent practice and dedicated coaching, he has transformed into a formidable tournament player in just two years.</p>
+                    
+                    <div class="case-study-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">650+</div>
+                            <div class="stat-label">Rating Points Gained</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">7</div>
+                            <div class="stat-label">Tournament Trophies</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">2</div>
+                            <div class="stat-label">Years of Training</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1st</div>
+                            <div class="stat-label">State Ranking (U10)</div>
+                        </div>
+                    </div>
+                    
+                    <p>"When Ahmad first came to me, he knew only the basic moves. We started with simple tactical patterns and gradually built his understanding of chess principles. His natural talent combined with his dedication to practice made his progress exceptional."</p>
+                    
+                    <p>Ahmad now competes successfully in national-level tournaments and helps mentor younger students in our beginner classes.</p>
+                </div>
+                
+                <div class="case-study-image">
+                    <img src="images/student-spotlight.jpg" alt="Student Spotlight">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tournament-results">
+        <div class="container">
+            <h2 class="section-title">Recent Tournament Achievements</h2>
+            
+            <p>My students regularly participate in local, regional, and national tournaments. Here are some of their recent achievements:</p>
+            
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Tournament</th>
+                        <th>Category</th>
+                        <th>Result</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ahmad K.</td>
+                        <td>National Youth Championship</td>
+                        <td>Under 10</td>
+                        <td><span class="medal gold"><i class="fas fa-medal"></i></span> 1st Place</td>
+                        <td>March 2025</td>
+                    </tr>
+                    <tr>
+                        <td>Sarah L.</td>
+                        <td>Regional Scholastic Championship</td>
+                        <td>Under 12 Girls</td>
+                        <td><span class="medal gold"><i class="fas fa-medal"></i></span> 1st Place</td>
+                        <td>February 2025</td>
+                    </tr>
+                    <tr>
+                        <td>Michael T.</td>
+                        <td>City Chess Open</td>
+                        <td>Amateur Section</td>
+                        <td><span class="medal silver"><i class="fas fa-medal"></i></span> 2nd Place</td>
+                        <td>February 2025</td>
+                    </tr>
+                    <tr>
+                        <td>Aisha R.</td>
+                        <td>School District Championship</td>
+                        <td>High School</td>
+                        <td><span class="medal bronze"><i class="fas fa-medal"></i></span> 3rd Place</td>
+                        <td>January 2025</td>
+                    </tr>
+                    <tr>
+                        <td>David W.</td>
+                        <td>Weekend Rapid Tournament</td>
+                        <td>Under 1500 Rating</td>
+                        <td><span class="medal gold"><i class="fas fa-medal"></i></span> 1st Place</td>
+                        <td>January 2025</td>
+                    </tr>
+                    <tr>
+                        <td>CFK Tambun Team</td>
+                        <td>Inter-Club Championship</td>
+                        <td>Junior Division</td>
+                        <td><span class="medal silver"><i class="fas fa-medal"></i></span> 2nd Place</td>
+                        <td>December 2024</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="progress-stories">
+        <div class="container">
+            <h2 class="section-title">Student Progress Stories</h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"When I started chess lessons, I would lose most of my games quickly. After six months of coaching, I won my first tournament game and now regularly score points in local competitions. The systematic approach to learning openings and tactics has made all the difference."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="images/student1.jpg" alt="Student Testimonial">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Teenage student</h4>
+                            <p>Rating improvement: 0 → 1200</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"I had plateaued at a 1400 rating for years before starting these lessons. The coach identified weaknesses in my endgame technique and strategic understanding that were holding me back. Within a year, I broke 1700 and am still improving."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="images/student2.jpg" alt="Student Testimonial">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Adult club player</h4>
+                            <p>Rating improvement: 1400 → 1700+</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Chess was just a hobby for me, but with proper coaching, I've developed a much deeper appreciation for the game. I've learned to analyze positions systematically and create plans based on positional factors. My online rating has increased by over 300 points!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="images/student3.jpg" alt="Student Testimonial">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Online chess enthusiast</h4>
+                            <p>Rating improvement: 900 → 1250</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">Photo Gallery</h2>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="images/gallery1.jpg" alt="Tournament Winners">
+                    <div class="gallery-caption">Regional Tournament Winners, January 2025</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery2.jpg" alt="Group Class">
+                    <div class="gallery-caption">Beginner Group Class in Action</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery3.jpg" alt="Trophy Ceremony">
+                    <div class="gallery-caption">National Youth Championship Trophy Ceremony</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery4.jpg" alt="Chess Camp">
+                    <div class="gallery-caption">Summer Chess Camp 2024</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery5.jpg" alt="Individual Lesson">
+                    <div class="gallery-caption">One-on-One Coaching Session</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/gallery6.jpg" alt="Team Photo">
+                    <div class="gallery-caption">CFK Tambun Chess Team</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Write Your Own Success Story?</h2>
+            <p>Join our chess coaching programs and start your journey toward chess improvement today.</p>
+            <a href="contact.html" class="btn btn-primary">Get Started</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Chess Coach Logo">
+                    <h3>Chess<span>Coach</span></h3>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Information</h4>
+                    <p><i class="fas fa-envelope"></i> email@example.com</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-map-marker-alt"></i> CFK Tambun</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="schedule.html">Schedule</a></li>
+                        <li><a href="success.html">Success Stories</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Me</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ChessCoach. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

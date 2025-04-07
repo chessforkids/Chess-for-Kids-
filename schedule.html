@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Schedule - Professional Chess Instruction</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="View the current schedule of chess classes, tournaments, and special events. Find the perfect chess learning opportunity for your skill level.">
+    <style>
+        /* Additional styles specific to Schedule page */
+        .schedule-section {
+            padding: 5rem 0;
+        }
+        
+        .calendar {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .calendar-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .calendar-header h2 {
+            margin: 0;
+            color: white;
+        }
+        
+        .calendar-nav {
+            display: flex;
+        }
+        
+        .calendar-nav button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            margin: 0 0.25rem;
+        }
+        
+        .calendar-nav button:hover {
+            color: var(--secondary-color);
+        }
+        
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            background-color: var(--light-color);
+            padding: 1rem 0;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-auto-rows: minmax(120px, auto);
+            text-align: right;
+        }
+        
+        .calendar-day {
+            border: 1px solid #eee;
+            padding: 0.5rem;
+            min-height: 120px;
+            position: relative;
+        }
+        
+        .calendar-day.inactive {
+            background-color: #f9f9f9;
+            color: #ccc;
+        }
+        
+        .day-number {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .calendar-event {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            margin-bottom: 0.25rem;
+            font-size: 0.8rem;
+            text-align: left;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .calendar-event.beginner {
+            background-color: #27ae60;
+        }
+        
+        .calendar-event.intermediate {
+            background-color: #f39c12;
+        }
+        
+        .calendar-event.advanced {
+            background-color: #e74c3c;
+        }
+        
+        .calendar-event.tournament {
+            background-color: #8e44ad;
+        }
+        
+        .event-details {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            width: 300px;
+            max-width: 90vw;
+        }
+        
+        .event-details h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .event-details p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .event-details .close-button {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        .event-details .close-button:hover {
+            color: var(--primary-color);
+        }
+        
+        .event-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+        }
+        
+        .upcoming-events {
+            margin-top: 3rem;
+        }
+        
+        .event-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .event-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .event-card-header {
+            padding: 1.5rem;
+            color: white;
+        }
+        
+        .event-card-header.beginner {
+            background-color: #27ae60;
+        }
+        
+        .event-card-header.intermediate {
+            background-color: #f39c12;
+        }
+        
+        .event-card-header.advanced {
+            background-color: #e74c3c;
+        }
+        
+        .event-card-header.tournament {
+            background-color: #8e44ad;
+        }
+        
+        .event-card-body {
+            padding: 1.5rem;
+        }
+        
+        .event-card-body h3 {
+            margin-top: 0;
+        }
+        
+        .event-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: #777;
+        }
+        
+        .event-meta i {
+            margin-right: 0.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .event-card-footer {
+            padding: 1rem 1.5rem;
+            background-color: var(--light-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .event-card-footer .spots {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 1rem;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+        }
+        
+        .legend-color.beginner {
+            background-color: #27ae60;
+        }
+        
+        .legend-color.intermediate {
+            background-color: #f39c12;
+        }
+        
+        .legend-color.advanced {
+            background-color: #e74c3c;
+        }
+        
+        .legend-color.tournament {
+            background-color: #8e44ad;
+        }
+        
+        @media (max-width: 768px) {
+            .calendar-weekdays span {
+                font-size: 0.8rem;
+            }
+            
+            .calendar-days {
+                grid-auto-rows: minmax(80px, auto);
+            }
+            
+            .calendar-day {
+                min-height: 80px;
+                padding: 0.25rem;
+            }
+            
+            .calendar-event {
+                padding: 0.1rem 0.25rem;
+                font-size: 0.7rem;
+            }
+            
+            .day-number {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Chess Coach Logo">
+                <h1>Chess<span>Coach</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="schedule.html" class="active">Schedule</a></li>
+                    <li><a href="success.html">Success Stories</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Class Schedule</h1>
+            <p>View upcoming classes, tournaments, and special events</p>
+        </div>
+    </section>
+
+    <section class="schedule-section">
+        <div class="container">
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color beginner"></div>
+                    <span>Beginner Classes</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color intermediate"></div>
+                    <span>Intermediate Classes</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color advanced"></div>
+                    <span>Advanced Classes</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color tournament"></div>
+                    <span>Tournaments & Special Events</span>
+                </div>
+            </div>
+            
+            <div class="calendar">
+                <div class="calendar-header">
+                    <div class="calendar-nav">
+                        <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                    </div>
+                    <h2 id="current-month">April 2025</h2>
+                    <div class="calendar-nav">
+                        <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                
+                <div class="calendar-weekdays">
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                </div>
+                
+                <div class="calendar-days" id="calendar-days">
+                    <!-- Calendar days will be generated by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="upcoming-events">
+                <h2 class="section-title">Featured Upcoming Events</h2>
+                
+                <div class="event-list">
+                    <div class="event-card">
+                        <div class="event-card-header beginner">
+                            <h3>Beginner Group Class</h3>
+                        </div>
+                        <div class="event-card-body">
+                            <div class="event-meta">
+                                <i class="far fa-calendar"></i>
+                                <span>Every Monday, 4:00 PM - 5:30 PM</span>
+                            </div>
+                            <div class="event-meta">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>CFK Tambun</span>
+                            </div>
+                            <p>Perfect for new players learning the fundamentals of chess. This structured class covers basic rules, simple tactics, and essential principles in a fun, supportive environment.</p>
+                        </div>
+                        <div class="event-card-footer">
+                            <span class="spots">4 spots remaining</span>
+                            <a href="contact.html" class="btn btn-secondary">Register</a>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-card-header intermediate">
+                            <h3>Tactics Workshop</h3>
+                        </div>
+                        <div class="event-card-body">
+                            <div class="event-meta">
+                                <i class="far fa-calendar"></i>
+                                <span>April 22, 2025, 6:00 PM - 8:00 PM</span>
+                            </div>
+                            <div class="event-meta">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>CFK Tambun</span>
+                            </div>
+                            <p>A special workshop focused on tactical patterns and combinations. Learn to spot forks, pins, skewers, and other tactical motifs that will immediately improve your results.</p>
+                        </div>
+                        <div class="event-card-footer">
+                            <span class="spots">6 spots remaining</span>
+                            <a href="contact.html" class="btn btn-secondary">Register</a>
+                        </div>
+                    </div>
+                    
+                    <div class="event-card">
+                        <div class="event-card-header tournament">
+                            <h3>Weekend Tournament</h3>
+                        </div>
+                        <div class="event-card-body">
+                            <div class="event-meta">
+                                <i class="far fa-calendar"></i>
+                                <span>April 29, 2025, 9:00 AM - 5:00 PM</span>
+                            </div>
+                            <div class="event-meta">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Community Center</span>
+                            </div>
+                            <p>A friendly tournament open to players of all levels. 5-round Swiss format with 30-minute time control. Trophies and prizes for various categories and age groups.</p>
+                        </div>
+                        <div class="event-card-footer">
+                            <span class="spots">12 spots remaining</span>
+                            <a href="contact.html" class="btn btn-secondary">Register</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="private-lessons">
+                <h2 class="section-title">Private Lesson Availability</h2>
+                
+                <p>Private lessons are available by appointment. Current availability for one-on-one instruction:</p>
+                
+                <ul>
+                    <li><strong>Mondays:</strong> 6:00 PM - 8:00 PM</li>
+                    <li><strong>Tuesdays:</strong> 4:00 PM - 8:00 PM</li>
+                    <li><strong>Thursdays:</strong> 4:00 PM - 8:00 PM</li>
+                    <li><strong>Saturdays:</strong> 10:00 AM - 2:00 PM</li>
+                </ul>
+                
+                <p>To schedule a private lesson, please <a href="contact.html">contact me</a> with your preferred date and time.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="event-overlay" id="event-overlay"></div>
+    <div class="event-details" id="event-details">
+        <button class="close-button" id="close-event-details"><i class="fas fa-times"></i></button>
+        <h3 id="event-title">Event Title</h3>
+        <p id="event-time"><i class="far fa-clock"></i> <span>Time</span></p>
+        <p id="event-location"><i class="fas fa-map-marker-alt"></i> <span>Location</span></p>
+        <p id="event-description">Event description will appear here.</p>
+        <a href="contact.html" class="btn btn-primary">Register</a>
+    </div>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Join a Class?</h2>
+            <p>Contact me today to register for any of the scheduled classes or to inquire about private lessons.</p>
+            <a href="contact.html" class="btn btn-primary">Get Started</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Chess Coach Logo">
+                    <h3>Chess<span>Coach</span></h3>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Information</h4>
+                    <p><i class="fas fa-envelope"></i> email@example.com</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-map-marker-alt"></i> CFK Tambun</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="schedule.html">Schedule</a></li>
+                        <li><a href="success.html">Success Stories</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Me</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ChessCoach. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Calendar functionality
+            const calendarDays = document.getElementById('calendar-days');
+            const currentMonthElement = document.getElementById('current-month');
+            const prevMonthButton = document.getElementById('prev-month');
+            const nextMonthButton = document.getElementById('next-month');
+            const eventOverlay = document.getElementById('event-overlay');
+            const eventDetails = document.getElementById('event-details');
+            const closeEventDetails = document.getElementById('close-event-details');
+            
+            // Set current date
+            let currentDate = new Date();
+            let currentMonth = currentDate.getMonth();
+            let currentYear = currentDate.getFullYear();
+            
+            // Sample events data
+            const events = [
+                {
+                    title: 'Beginner Class',
+                    date: new Date(2025, 3, 1), // April 1, 2025
+                    time: '4:00 PM - 5:30 PM',
+                    location: 'CFK Tambun',
+                    description: 'Weekly beginner class covering basic principles and simple tactics.',
+                    type: 'beginner'
+                },
+                {
+                    title: 'Intermediate Class',
+                    date: new Date(2025, 3, 3), // April 3, 2025
+                    time: '4:00 PM - 5:30 PM',
+                    location: 'CFK Tambun',
+                    description: 'Weekly intermediate class focusing on strategic concepts and tactical patterns.',
+                    type: 'intermediate'
+                },
+                {
+                    title: 'Advanced Class',
+                    date: new Date(2025, 3, 5), // April 5, 2025
+                    time: '4:00 PM - 5:30 PM',
+                    location: 'CFK Tambun',
+                    description: 'Weekly advanced class covering complex positional play and endgame theory.',
+                    type: 'advanced'
+                },
+                {
+                    title: 'Beginner Class',
+                    date: new Date(2025, 3, 8), // April 8, 2025
+                    time: '4:00 PM - 5:30 PM',
+                    location: 'CFK Tambun',
+                    description: 'Weekly beginner class covering basic principles and simple tactics.',
+                    type: 'beginner'
+                },
+                {
+                    title: 'Intermediate Class',
+                    date: new Date(2025, 3, 10), // April 10, 2025
+                    time: '4:00 PM - 5:30 PM',
+                    location: 'CFK Tambun',
+                    description: 'Weekly intermediate class focusing on strategic concepts and tactical patterns.',
+                    type: 'intermediate'
+                },
+                {
+                    title: 'Advanced Class',
+                    date: new Date(2025, 3, 12), // April 12, 2025
+                    time: '4:00 PM - 5:30 PM',
+                    location: 'CFK Tambun',
+                    description: 'Weekly advanced class covering complex positional play and endgame theory.',
+                    type: 'advanced'
+                },
+                {
+                    title: 'Beginner Class',
+                    date: new Date(2025, 3, 15), // April 15, 2025
+                    time: '4:00 PM - 5:30 PM',
+                    location: 'CFK Tambun',
+                    description: 'Weekly beginner class covering basic principles and simple tactics.',
+                    type: 'beginner'
+                },
+                {
+                    title: 'Tactics Workshop',
+                    date: new Date(2025, 3, 22), // April 22, 2025
+                    time: '6:00 PM - 8:00 PM',
+                    location: 'CFK Tambun',
+                    description: 'Special workshop focused on tactical patterns and combinations. Learn to spot forks, pins, skewers, and other tactical motifs.',
+                    type: 'intermediate'
+                },
+                {
+                    title: 'Weekend Tournament',
+                    date: new Date(2025, 3, 29), // April 29, 2025
+                    time: '9:00 AM - 5:00 PM',
+                    location: 'Community Center',
+                    description: 'A friendly tournament open to players of all levels. 5-round Swiss format with 30-minute time control. Trophies and prizes for various categories.',
+                    type: 'tournament'
+                }
+            ];
+            
+            // Generate calendar
+            function generateCalendar() {
+                calendarDays.innerHTML = '';
+                
+                // Update month and year display
+                const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                currentMonthElement.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+                
+                // Get first day of month and total days in month
+                const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+                const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+                
+                // Previous month's days
+                const prevMonthDays = new Date(currentYear, currentMonth, 0).getDate();
+                for (let i = firstDay - 1; i >= 0; i--) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day inactive';
+                    dayElement.innerHTML = `<div class="day-number">${prevMonthDays - i}</div>`;
+                    calendarDays.appendChild(dayElement);
+                }
+                
+                // Current month's days
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day';
+                    dayElement.innerHTML = `<div class="day-number">${i}</div>`;
+                    
+                    // Check for events on this day
+                    const dayEvents = events.filter(event => {
+                        return event.date.getDate() === i && 
+                               event.date.getMonth() === currentMonth && 
+                               event.date.getFullYear() === currentYear;
+                    });
+                    
+                    // Add events to the day
+                    dayEvents.forEach(event => {
+                        const eventElement = document.createElement('div');
+                        eventElement.className = `calendar-event ${event.type}`;
+                        eventElement.textContent = event.title;
+                        eventElement.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                            showEventDetails(event);
+                        });
+                        dayElement.appendChild(eventElement);
+                    });
+                    
+                    calendarDays.appendChild(dayElement);
+                }
+                
+                // Next month's days
+                const totalCalendarCells = 42; // 6 rows of 7 days
+                const remainingCells = totalCalendarCells - (firstDay + daysInMonth);
+                for (let i = 1; i <= remainingCells; i++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day inactive';
+                    dayElement.innerHTML = `<div class="day-number">${i}</div>`;
+                    calendarDays.appendChild(dayElement);
+                }
+            }
+            
+            // Show event details
+            function showEventDetails(event) {
+                document.getElementById('event-title').textContent = event.title;
+                document.getElementById('event-time').querySelector('span').textContent = event.time;
+                document.getElementById('event-location').querySelector('span').textContent = event.location;
+                document.getElementById('event-description').textContent = event.description;
+                
+                eventOverlay.style.display = 'block';
+                eventDetails.style.display = 'block';
+            }
+            
+            // Close event details
+            closeEventDetails.addEventListener('click', function() {
+                eventOverlay.style.display = 'none';
+                eventDetails.style.display = 'none';
+            });
+            
+            eventOverlay.addEventListener('click', function() {
+                eventOverlay.style.display = 'none';
+                eventDetails.style.display = 'none';
+            });
+            
+            // Navigate to previous month
+            prevMonthButton.addEventListener('click', function() {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                generateCalendar();
+            });
+            
+            // Navigate to next month
+            nextMonthButton.addEventListener('click', function() {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                generateCalendar();
+            });
+            
+            // Initialize calendar
+            generateCalendar();
+        });
+    </script>
+</body>
+</html>

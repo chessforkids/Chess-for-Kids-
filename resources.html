@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Resources - Professional Chess Instruction</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Free chess resources including puzzles, opening guides, and training tips to help improve your chess skills.">
+    <style>
+        /* Additional styles specific to Resources page */
+        .resources-section {
+            padding: 5rem 0;
+        }
+        
+        .resource-category {
+            margin-bottom: 4rem;
+        }
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .resource-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .resource-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .resource-card:hover .resource-image img {
+            transform: scale(1.1);
+        }
+        
+        .resource-content {
+            padding: 1.5rem;
+        }
+        
+        .resource-content h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .resource-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .resource-meta .difficulty {
+            display: flex;
+            align-items: center;
+        }
+        
+        .resource-meta .difficulty i {
+            color: var(--secondary-color);
+            margin-right: 0.5rem;
+        }
+        
+        .chess-board-container {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        
+        .chess-board {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #f0d9b5;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: repeat(8, 1fr);
+            border: 5px solid #8b4513;
+        }
+        
+        .chess-square {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+        }
+        
+        .chess-square.black {
+            background-color: #b58863;
+        }
+        
+        .chess-square.white {
+            background-color: #f0d9b5;
+        }
+        
+        .board-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .board-controls button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .board-controls button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .puzzle-info {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .puzzle-info h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .puzzle-info p {
+            margin-bottom: 1rem;
+        }
+        
+        .downloads-section {
+            background-color: var(--light-color);
+            padding: 5rem 0;
+        }
+        
+        .download-item {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .download-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-right: 1.5rem;
+        }
+        
+        .download-content {
+            flex-grow: 1;
+        }
+        
+        .download-content h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .download-button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .download-button i {
+            margin-right: 0.5rem;
+        }
+        
+        .download-button:hover {
+            background-color: #d35400;
+        }
+        
+        @media (max-width: 768px) {
+            .chess-board-container {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Chess Coach Logo">
+                <h1>Chess<span>Coach</span></h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="resources.html" class="active">Resources</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="success.html">Success Stories</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Chess Resources</h1>
+            <p>Free tools and materials to help you improve your chess skills</p>
+        </div>
+    </section>
+
+    <section class="puzzle-section">
+        <div class="container">
+            <h2 class="section-title">Puzzle of the Week</h2>
+            
+            <div class="chess-board-container">
+                <div class="puzzle-info">
+                    <h3>White to Move and Win</h3>
+                    <p>Difficulty: Intermediate</p>
+                </div>
+                
+                <div class="chess-board" id="puzzle-board">
+                    <!-- Chess board will be generated by JavaScript -->
+                </div>
+                
+                <div class="board-controls">
+                    <button id="hint-button">Show Hint</button>
+                    <button id="solution-button">Show Solution</button>
+                    <button id="reset-button">Reset</button>
+                </div>
+                
+                <div id="puzzle-message" class="puzzle-info" style="display: none;"></div>
+            </div>
+            
+            <div class="puzzle-description">
+                <p>Each week, I post a new chess puzzle for you to solve. These puzzles are carefully selected to help you develop your tactical vision and calculation skills. Try to solve them without moving the pieces first, then use the interactive board to check your solution.</p>
+                <p>For more puzzles and tactical training, check out the resources below or consider joining one of my <a href="services.html">coaching programs</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="resources-section">
+        <div class="container">
+            <div class="resource-category">
+                <h2 class="section-title">Opening Guides</h2>
+                
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <div class="resource-image">
+                            <img src="images/resource-italian.jpg" alt="Italian Game Opening">
+                        </div>
+                        <div class="resource-content">
+                            <h3>Italian Game for Beginners</h3>
+                            <p>A comprehensive guide to the Italian Game opening, perfect for beginners looking for a solid opening with White.</p>
+                            <a href="#" class="btn btn-secondary">Read Guide</a>
+                            <div class="resource-meta">
+                                <span class="difficulty"><i class="fas fa-star"></i> Beginner</span>
+                                <span class="time">10 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-image">
+                            <img src="images/resource-sicilian.jpg" alt="Sicilian Defense">
+                        </div>
+                        <div class="resource-content">
+                            <h3>Sicilian Defense Essentials</h3>
+                            <p>Learn the fundamental ideas behind the Sicilian Defense, one of the most popular and aggressive responses to 1.e4.</p>
+                            <a href="#" class="btn btn-secondary">Read Guide</a>
+                            <div class="resource-meta">
+                                <span class="difficulty"><i class="fas fa-star"></i><i class="fas fa-star"></i> Intermediate</span>
+                                <span class="time">15 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-image">
+                            <img src="images/resource-london.jpg" alt="London System">
+                        </div>
+                        <div class="resource-content">
+                            <h3>London System Simplified</h3>
+                            <p>A straightforward approach to the London System, a versatile opening for White that can be played against almost any Black setup.</p>
+                            <a href="#" class="btn btn-secondary">Read Guide</a>
+                            <div class="resource-meta">
+                                <span class="difficulty"><i class="fas fa-star"></i> Beginner</span>
+                                <span class="time">12 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resource-category">
+                <h2 class="section-title">Training Tips</h2>
+                
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <div class="resource-image">
+                            <img src="images/resource-tactics.jpg" alt="Tactical Training">
+                        </div>
+                        <div class="resource-content">
+                            <h3>Tactical Patterns Every Player Should Know</h3>
+                            <p>Learn the essential tactical patterns that form the foundation of chess combinations and attacking play.</p>
+                            <a href="#" class="btn btn-secondary">Read Article</a>
+                            <div class="resource-meta">
+                                <span class="difficulty"><i class="fas fa-star"></i><i class="fas fa-star"></i> Intermediate</span>
+                                <span class="time">20 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-image">
+                            <img src="images/resource-endgame.jpg" alt="Endgame Principles">
+                        </div>
+                        <div class="resource-content">
+                            <h3>Essential Endgame Principles</h3>
+                            <p>Master the fundamental endgame principles that will help you convert advantages and save difficult positions.</p>
+                            <a href="#" class="btn btn-secondary">Read Article</a>
+                            <div class="resource-meta">
+                                <span class="difficulty"><i class="fas fa-star"></i><i class="fas fa-star"></i> Intermediate</span>
+                                <span class="time">18 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-image">
+                            <img src="images/resource-study.jpg" alt="Study Plan">
+                        </div>
+                        <div class="resource-content">
+                            <h3>Creating an Effective Study Plan</h3>
+                            <p>Learn how to create a personalized chess study plan that will help you improve systematically and efficiently.</p>
+                            <a href="#" class="btn btn-secondary">Read Article</a>
+                            <div class="resource-meta">
+                                <span class="difficulty"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> All Levels</span>
+                                <span class="time">15 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="downloads-section">
+        <div class="container">
+            <h2 class="section-title">Downloadable Resources</h2>
+            
+            <div class="downloads-list">
+                <div class="download-item">
+                    <div class="download-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="download-content">
+                        <h3>Chess Notation Guide</h3>
+                        <p>A comprehensive guide to understanding and using chess notation, essential for recording games and studying from books.</p>
+                    </div>
+                    <a href="#" class="download-button">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+                
+                <div class="download-item">
+                    <div class="download-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="download-content">
+                        <h3>Tactical Puzzles Collection</h3>
+                        <p>A collection of 50 tactical puzzles organized by theme and difficulty level, perfect for daily practice.</p>
+                    </div>
+                    <a href="#" class="download-button">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+                
+                <div class="download-item">
+                    <div class="download-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <div class="download-content">
+                        <h3>Progress Tracker Template</h3>
+                        <p>A spreadsheet template to help you track your chess progress, including rating changes, game results, and study hours.</p>
+                    </div>
+                    <a href="#" class="download-button">
+                        <i class="fas fa-download"></i> Download Excel
+                    </a>
+                </div>
+                
+                <div class="download-item">
+                    <div class="download-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="download-content">
+                        <h3>Beginner's Chess Handbook</h3>
+                        <p>A comprehensive guide for beginners covering rules, basic strategies, and common mistakes to avoid.</p>
+                    </div>
+                    <a href="#" class="download-button">
+                        <i class="fas fa-download"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="recommended-section">
+        <div class="container">
+            <h2 class="section-title">Recommended Resources</h2>
+            
+            <div class="resource-category">
+                <h3>Books for Different Levels</h3>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <div class="resource-content">
+                            <h3>For Beginners</h3>
+                            <ul>
+                                <li>"Bobby Fischer Teaches Chess" by Bobby Fischer</li>
+                                <li>"Chess Fundamentals" by José Raúl Capablanca</li>
+                                <li>"Logical Chess: Move by Move" by Irving Chernev</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-content">
+                            <h3>For Intermediate Players</h3>
+                            <ul>
+                                <li>"My System" by Aron Nimzowitsch</li>
+                                <li>"Winning Chess Strategies" by Yasser Seirawan</li>
+                                <li>"How to Reassess Your Chess" by Jeremy Silman</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-content">
+                            <h3>For Advanced Players</h3>
+                            <ul>
+                                <li>"Dvoretsky's Endgame Manual" by Mark Dvoretsky</li>
+                                <li>"The Art of Attack in Chess" by Vladimir Vukovic</li>
+                                <li>"Positional Chess Handbook" by Israel Gelfer</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="resource-category">
+                <h3>Online Resources</h3>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <div class="resource-content">
+                            <h3>Chess Websites</h3>
+                            <ul>
+                                <li><a href="https://www.chess.com" target="_blank">Chess.com</a> - Play, learn, and connect with the chess community</li>
+                                <li><a href="https://lichess.org" target="_blank">Lichess.org</a> - Free chess server with training tools</li>
+                                <li><a href="https://www.chesstempo.com" target="_blank">ChessTempo</a> - Tactical training and game analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-content">
+                            <h3>YouTube Channels</h3>
+                            <ul>
+                                <li>GothamChess - Entertaining and educational content</li>
+                                <li>ChessNetwork - Clear explanations of concepts</li>
+                                <li>Saint Louis Chess Club - Lectures from grandmasters</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-card">
+                        <div class="resource-content">
+                            <h3>Mobile Apps</h3>
+                            <ul>
+                                <li>Chess.com App - Play, solve puzzles, and watch videos</li>
+                                <li>Lichess App - Free and open-source chess platform</li>
+                                <li>CT-Art - Tactical training app with thousands of puzzles</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Want Personalized Chess Guidance?</h2>
+            <p>While these resources are helpful, nothing beats personalized instruction tailored to your specific needs and goals.</p>
+            <a href="contact.html" class="btn btn-primary">Contact Me</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Chess Coach Logo">
+                    <h3>Chess<span>Coach</span></h3>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Information</h4>
+                    <p><i class="fas fa-envelope"></i> email@example.com</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-map-marker-alt"></i> CFK Tambun</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="schedule.html">Schedule</a></li>
+                        <li><a href="success.html">Success Stories</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Me</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ChessCoach. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Chess pieces Unicode characters
+            const pieces = {
+                'K': '♔', 'Q': '♕', 'R': '♖', 'B': '♗', 'N': '♘', 'P': '♙',
+                'k': '♚', 'q': '♛', 'r': '♜', 'b': '♝', 'n': '♞', 'p': '♟'
+            };
+            
+            // Sample puzzle position (FEN: 3r2k1/pp3ppp/8/2p5/3N4/P3P1P1/1P3P1P/R5K1 w - - 0 1)
+            // White to move and win
+            const puzzlePosition = [
+                ['', '', '', 'r', '', '', 'k', ''],
+                ['p', 'p', '', '', '', 'p', 'p', 'p'],
+                ['', '', '', '', '', '', '', ''],
+                ['', '', 'p', '', '', '', '', ''],
+                ['', '', '', 'N', '', '', '', ''],
+                ['P', '', '', '', 'P', '', 'P', ''],
+                ['', 'P', '', '', '', 'P', '', 'P'],
+                ['R', '', '', '', '', '', 'K', '']
+            ];
+            
+            const chessBoard = document.getElementById('puzzle-board');
+            const hintButton = document.getElementById('hint-button');
+            const solutionButton = document.getElementById('solution-button');
+            const resetButton = document.getElementById('reset-button');
+            const puzzleMessage = document.getElementById('puzzle-message');
+            
+            // Initialize the chess board
+            function initializeBoard() {
+                chessBoard.innerHTML = '';
+                
+                for (let row = 0; row < 8; row++) {
+                    for (let col = 0; col < 8; col++) {
+                        const square = document.createElement('div');
+                        square.className = `chess-square ${(row + col) % 2 === 0 ? 'white' : 'black'}`;
+                        
+                        // Add piece if exists in the position
+                        if (puzzlePosition[row][col]) {
+                            square.innerHTML = pieces[puzzlePosition[row][col]];
+                        }
+                        
+                        chessBoard.appendChild(square);
+                    }
+                }
+            }
+            
+            // Show hint
+            hintButton.addEventListener('click', function() {
+                puzzleMessage.style.display = 'block';
+                puzzleMessage.innerHTML = '<p>Hint: Look for a knight fork that attacks two major pieces.</p>';
+            });
+            
+            // Show solution
+            solutionButton.addEventListener('click', function() {
+                puzzleMessage.style.display = 'block';
+                puzzleMessage.innerHTML = '<p>Solution: 1. Nf5! threatening both the rook and the f7 pawn with discovered check. If 1...Rd7 then 2.Nh6+ wins the queen. If 1...Rd1+ 2.Rxd1 and the knight still forks the king and f7 pawn.</p>';
+            });
+            
+            // Reset the puzzle
+            resetButton.addEventListener('click', function() {
+                initializeBoard();
+                puzzleMessage.style.display = 'none';
+            });
+            
+            // Initialize the board when the page loads
+            initializeBoard();
+        });
+    </script>
+</body>
+</html>
